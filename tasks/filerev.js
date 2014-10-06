@@ -74,10 +74,6 @@ module.exports = function (grunt) {
            }
         }
 
-        if(options.stripPath) {
-          file = file.match(/^.+\/(.+)$/)[1];
-        }
-
         filerev.summary[path.normalize(file)] = path.join(dirname, newName);
         grunt.log.writeln(chalk.green('✔ ') + file + chalk.gray(' changed to ') + newName);
         if (sourceMap) {
