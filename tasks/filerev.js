@@ -70,6 +70,11 @@ module.exports = function (grunt) {
                 } else {
                     grunt.file.copy(map, resultPath);
                 }
+
+                var contents = grunt.file.read(resultPath);
+                contents = contents.replace(/sourceMappingURL=.*js\.map/, 'sourceMappingURL=' + newName);
+                grunt.file.write(resultPath, contents);
+
                 sourceMap = true;
            }
         }
