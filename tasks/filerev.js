@@ -84,6 +84,7 @@ module.exports = function (grunt) {
         if (sourceMap) {
             filerev.summary[path.normalize(file + '.map')] = path.join(dirname, newName + '.map');
             grunt.log.writeln(chalk.green('✔ ') + file + '.map' + chalk.gray(' changed to ') + newName + '.map');
+            grunt.log.writeln(chalk.green('✔ ') + file + ' has its sourcemap reference updated');
         }
 
       });
