@@ -62,13 +62,13 @@ module.exports = function (grunt) {
         // Source maps
         var sourceMap = false;
         if (ext === '.js' || ext === '.css') {
-            var map = file + '.map';
-            resultPath += '.map';
-            if (grunt.file.exists(map)) {
+            var mapFile = file + '.map';
+            var mapResultPath = resultPath + '.map';
+            if (grunt.file.exists(mapFile)) {
                 if (move) {
-                    fs.renameSync(map, resultPath);
+                    fs.renameSync(mapFile, mapResultPath);
                 } else {
-                    grunt.file.copy(map, resultPath);
+                    grunt.file.copy(mapFile, mapResultPath);
                 }
 
                 var contents = grunt.file.read(resultPath);
@@ -84,6 +84,7 @@ module.exports = function (grunt) {
         if (sourceMap) {
             filerev.summary[path.normalize(file + '.map')] = path.join(dirname, newName + '.map');
             grunt.log.writeln(chalk.green('✔ ') + file + '.map' + chalk.gray(' changed to ') + newName + '.map');
+            grunt.log.writeln(chalk.green('✔ ') + file + ' has its sourcemap reference updated');
         }
 
       });
